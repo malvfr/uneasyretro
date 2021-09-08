@@ -1,0 +1,31 @@
+<div phx-hook="Drag" id="drag" class="container-fluid">
+  <div class="row justify-content-center min-vh-100">
+
+    <%= live_component @socket, RetroWeb.BoardLive.BoardLaneComponent,
+        draggables: 1,
+        drop_zone_id: "went_well_zone",
+        title: "Went well",
+        color: "#009886",
+        cards: @went_well_zone
+
+    %>
+
+    <%= live_component @socket, RetroWeb.BoardLive.BoardLaneComponent,
+        draggables: 1,
+        drop_zone_id: "to_improve_zone",
+        title: "To improve",
+        color: "#e92c64",
+        cards: @to_improve_zone
+
+    %>
+
+    <%= live_component @socket, RetroWeb.BoardLive.BoardLaneComponent,
+        draggables: 1,
+        drop_zone_id: "action_zone",
+        title: "Action",
+        color: "#a63eb9",
+        cards: @action_zone
+    %>
+
+  </div>
+</div>
