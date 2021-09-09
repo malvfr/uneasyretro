@@ -18,9 +18,13 @@ export default {
         onEnd: function (evt) {
           hook.pushEventTo(selector, "dropped", {
             draggedId: evt.item.id,
-            draggedItem: evt.item,
             dropzoneId: evt.to.id,
+            fromId: evt.from.id,
             draggableIndex: evt.newDraggableIndex,
+            item: {
+              text: evt.item.querySelector(".card-text").innerText,
+              title: evt.item.querySelector(".card-title").innerText,
+            },
           });
         },
       });
