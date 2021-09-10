@@ -17,8 +17,13 @@ defmodule Retro do
   end
 
   def initialize(id, initial_data) do
-    Agent.start_link(fn -> initial_data end, name: agent_name(id))
-    subscribe(id)
+    case Agent.start_link(fn -> initial_data end, name: agent_name(id)) do
+      {:ok, _pid} ->
+        :ok
+
+      {:error, {:already_started, _pid}} ->
+        {:error, :already_started}
+    end
   end
 
   def get(id) do
@@ -47,11 +52,13 @@ defmodule Retro do
 
     Agent.update(agent_name(id), fn state ->
       state
-      |> IO.inspect(label: "BEFORE")
       |> remove_from_dropzone(String.to_atom(from_dropzone), card_id)
       |> insert_into_dropzone(String.to_atom(to_dropzone), card_id, item)
-      |> IO.inspect(label: "AFTER")
     end)
+
+    data = get(id)
+    broadcast(id, data)
+    data
   end
 
   defp agent_name(id) do
