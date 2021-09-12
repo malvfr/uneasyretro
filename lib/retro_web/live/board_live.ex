@@ -5,17 +5,9 @@ defmodule RetroWeb.BoardLive do
   @impl true
   def mount(%{"id" => id}, _session, socket) do
     initial_data = %{
-      went_well_zone: [
-        %{title: "bob 1", id: 1, text: "chopp"}
-      ],
-      to_improve_zone: [
-        %{title: "bob 2", id: 2, text: "chopp"},
-        %{title: "bob 3", id: 3, text: "13123"}
-      ],
-      action_zone: [
-        %{title: "bob 4", id: 4, text: "chopp"},
-        %{title: "bob 5", id: 5, text: "13123"}
-      ]
+      went_well_zone: [],
+      to_improve_zone: [],
+      action_zone: []
     }
 
     Retro.subscribe(id)
@@ -36,9 +28,29 @@ defmodule RetroWeb.BoardLive do
 
   @impl true
   def handle_event("dropped", params, %{assigns: %{id: id}} = socket) do
-    Logger.debug("HANDLE_EVENT: #{inspect(params)}")
+    Logger.debug("HANDLE_EVENT: Dropped #{inspect(params)}")
 
     Retro.update(id, params)
+    {:noreply, fetch(socket)}
+  end
+
+  @impl true
+  def handle_event(
+        "add",
+        %{"card_ticket" => data},
+        %{assigns: %{id: id}} = socket
+      ) do
+    Retro.insert(data, id)
+    {:noreply, fetch(socket)}
+  end
+
+  @impl true
+  def handle_event(
+        "remove",
+        params,
+        %{assigns: %{id: id}} = socket
+      ) do
+    Retro.remove(params, id)
     {:noreply, fetch(socket)}
   end
 

@@ -42,6 +42,28 @@ defmodule Retro do
     end)
   end
 
+  def insert(%{"board_lane" => dropzone} = item, id) do
+    card_id = System.os_time(:second)
+
+    Agent.update(agent_name(id), fn state ->
+      insert_into_dropzone(state, String.to_atom(dropzone), card_id, item)
+    end)
+
+    data = get(id)
+    broadcast(id, data)
+  end
+
+  def remove(%{"card_id" => card_id, "board_lane" => board_lane} = item, id) do
+    Logger.debug("Remove item: #{inspect(item)}")
+
+    Agent.update(agent_name(id), fn state ->
+      remove_from_dropzone(state, String.to_atom(board_lane), String.to_integer(card_id))
+    end)
+
+    data = get(id)
+    broadcast(id, data)
+  end
+
   def update(id, %{
         "draggedId" => card_id,
         "dropzoneId" => to_dropzone,
@@ -73,7 +95,7 @@ defmodule Retro do
 
   defp insert_into_dropzone(map, dropzone, card_id, item) do
     Map.update!(map, dropzone, fn elements ->
-      [%{id: card_id, title: item["title"], text: item["text"]} | elements]
+      [%{id: card_id, text: item["text"]} | elements]
     end)
   end
 end

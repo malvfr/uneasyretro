@@ -23,7 +23,6 @@ export default {
             draggableIndex: evt.newDraggableIndex,
             item: {
               text: evt.item.querySelector(".card-text").innerText,
-              title: evt.item.querySelector(".card-title").innerText,
             },
           });
         },
