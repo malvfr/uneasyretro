@@ -15,7 +15,7 @@ defmodule RetroWeb.BoardLive.BoardLaneComponent do
               <h1> <%=@title%> </h1>
             </div>
             <hr/>
-            <div class="dropzone" id="<%=@drop_zone_id%>" style="padding: 10px; border-radius: 10px; background-color: #cccccc40">
+            <div class="dropzone min-vh-100" id="<%=@drop_zone_id%>" style="padding: 10px; border-radius: 10px; background-color: #cccccc40">
               <div class="d-grid gap-2" x-data="{ open: false }">
 
                   <button class="btn btn-add" type="button" @click="open = ! open">
