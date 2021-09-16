@@ -5,22 +5,24 @@ defmodule RetroWeb.BoardLive.BoardLaneComponent do
   @impl true
   def render(assigns) do
     ~L"""
-      <div class="col" style="background-color:<%=@color%>" >
+      <div class="col-md-4 col-lg-4 col-xs-1 col-sm-4" style="background-color:<%=@color%>" >
          <div class="row justify-content-center">
           <div
             class="col-md-11"
           >
+            <hr/>
             <div style="color: white;text-align:center">
-            <h1> <%=@title%> </h1>
+              <h1> <%=@title%> </h1>
             </div>
-            <div class="dropzone min-vh-100" id="<%=@drop_zone_id%>" style="padding: 10px; border-radius: 10px; background-color: #cccccc40">
+            <hr/>
+            <div class="dropzone" id="<%=@drop_zone_id%>" style="padding: 10px; border-radius: 10px; background-color: #cccccc40">
               <div class="d-grid gap-2" x-data="{ open: false }">
 
-                  <button class="btn" type="button" @click="open = ! open">
+                  <button class="btn btn-add" type="button" @click="open = ! open">
                       <i class="fas fa-plus"></i>
                   </button>
 
-                  <div x-show="open" style="background-color: white; border-radius: 15px">
+                  <div x-show="open" style="background-color: white; border-radius: 8px">
                     <div class="mb-3">
                         <form action="#" phx-submit="add">
                           <%= text_input :card_ticket, :text, placeholder: "What is in your mind?", class: "form-control", required: true %>
