@@ -27,15 +27,10 @@ defmodule RetroWeb.BoardLive.BoardLaneComponent do
                         <form action="#" phx-submit="add">
                           <%= text_input :card_ticket, :text, placeholder: "What is in your mind?", class: "form-control", required: true %>
                           <%= hidden_input :card_ticket, :board_lane, value: @drop_zone_id %>
-                          <div class="btn-group float-end" role="group" aria-label="Basic outlined example">
+                          <div class="btn-group float-end" role="group" style="margin-right: 12px">
                             <button class="btn p-1" type="submit">
                               <span style="color:green; font-size: 25px">
                                 <i class="fas fa-check"></i>
-                              </span>
-                            </button>
-                            <button class="btn p-1" type="button" @click="open = ! open">
-                              <span style="color:red; font-size: 25px">
-                                <i class="fas fa-times"></i>
                               </span>
                             </button>
                           </div>
