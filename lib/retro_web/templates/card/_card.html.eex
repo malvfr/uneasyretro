@@ -1,12 +1,12 @@
 <div id="<%=@card.id%>" class="draggable grid col-md-12" style="margin: 10px 0px 5px 0px; display: grid">
-  <div draggable="true" class="card ">
-    <div class="card-body">
+  <div draggable="true" class="card">
+    <div class="card-body pb-1">
       <p class="card-text"><%=@card.text%></p>
-       <button phx-value-card_id="<%=@card.id%>"  phx-value-board_lane="<%=@board_lane%>" style="font-size: 25px;float: right" class="btn p-1" type="button" phx-click="remove">
-          <span>
-            <i class="fas fa-times"></i>
-          </span>
-       </button>
+      <div class="btn-group float-end">
+        <span phx-value-card_id="<%=@card.id%>" phx-value-board_lane="<%=@board_lane%>" class="text-danger" style="font-size: 15px" class="btn p-1" type="button" phx-click="remove">
+          <i class="fas fa-times"></i>
+        </span>
+      </div>
     </div>
   </div>
 </div>
