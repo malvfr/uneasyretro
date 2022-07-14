@@ -11,4 +11,10 @@ defmodule RetroWeb.PageLive do
     slug = "/boards/" <> MnemonicSlugs.generate_slug()
     {:noreply, push_redirect(socket, to: slug)}
   end
+
+  @impl true
+  def handle_event("join_board", %{"boardId" => board_id}, socket) do
+    slug = "/boards/#{board_id}"
+    {:noreply, push_redirect(socket, to: slug)}
+  end
 end
