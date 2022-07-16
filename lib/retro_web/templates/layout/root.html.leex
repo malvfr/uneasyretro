@@ -6,28 +6,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <%= csrf_meta_tag() %>
     <%= live_title_tag assigns[:page_title] || "Metro"%>
-    <!--<link phx-track-static rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>"/>-->
-<link phx-track-static href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 
-<script src="https://kit.fontawesome.com/f0377ed35b.js" crossorigin="anonymous"></script>
-<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link phx-track-static href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">    <script defer phx-track-static type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
 
-<style>
- .btn-add:hover {
-   background-color: #d9d9e6;
- }
+    <link rel="stylesheet" href='<%= Routes.static_path(@conn, "/css/app.css") %>'/>
 
-@media (max-height: 820px) {
-  .dropzone {
-   min-height: 35vh!important;
-  }
-}
+    <script src="https://kit.fontawesome.com/f0377ed35b.js" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
-.dropzone {
-  min-height: 80vh
-}
+    <style>
+    .btn-add:hover {
+      background-color: #d9d9e6;
+    }
 
-</style>
+    @media (max-height: 820px) {
+      .dropzone {
+      min-height: 35vh!important;
+      }
+    }
+
+    .dropzone {
+      min-height: 80vh
+    }
+
+    </style>
   </head>
   <body>
     <%= @inner_content %>

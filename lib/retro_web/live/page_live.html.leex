@@ -1,1 +1,40 @@
-<button phx-click="create_board" class="btn btn-primary">Create a room</button>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">UnEasy Retro</a>
+  </div>
+</nav>
+<div class="home-container">
+  <div class="home-container-name">
+    <label for="personName" class="form-label">Your name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="personName"
+      placeholder="John Doe"
+    />
+  </div>
+  <hr />
+
+  <form phx-submit="join_board">
+    <div class="home-container-join-room">
+      <label for="roomId" class="visually-hidden">Join a room</label>
+      <input
+        type="text"
+        class="form-control"
+        id="boardId"
+        name="boardId"
+        placeholder="Room id"
+        style="margin-right: 5px"
+      />
+      <button type="submit" class="btn btn-primary mb-3">Join a room</button>
+    </div>
+  </form>
+  <div>
+    <p class="fs-2">Or</p>
+  </div>
+  <div>
+    <button phx-click="create_board" class="btn btn-primary">
+      Create a room
+    </button>
+  </div>
+</div>

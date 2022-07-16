@@ -87,3 +87,27 @@
   display: block;
   margin: -1rem 0 2rem;
 }
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.home-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-container-name {
+  width: 500px;
+}
+
+.home-container-join-room {
+  display: flex;
+  width: 500px;
+}
